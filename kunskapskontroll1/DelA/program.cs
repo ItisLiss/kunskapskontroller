@@ -1,6 +1,5 @@
 // En lista med namn List<string>
 
-using Microsoft.VisualBasic;
 
 List<string> names = ["Mjölk", "Bröd", "Ost", "Flingor"];
 
@@ -15,12 +14,12 @@ List<int> prices = [15, 32, 89, 25];
 string[] instructions = [
     "Varulistan:!",
     "",
-    "* Lägg till en vara i listan genom att skriva namn och sedan pris: ",
+    "* Lägg till en vara i listan genom att först skriva namnet på vara, sedan trycka 'Enter' ",
+    "* Skriva sedan in priset på nästa rad. ",
     "* Ta bort varan från listan genom att skriva dens numer.",
     ""
 
 ];
-Console.Clear();
 Console.WriteLine(string.Join("\n", instructions));
 
 // Loopen börjar med att lista upp våran lista som vi redan förberett så den är ej tom från början.
@@ -32,7 +31,7 @@ while(true)
         Console.WriteLine($"{i + 1}. {names[i]} - {prices[i]}kr");
         totalSum += prices[i];
     }
-    Console.WriteLine($"Totalt: {totalSum} kr");
+    Console.WriteLine($"Totala summan är: {totalSum} kr");
     // kollar av om listan skulle vara tom så får vi ett meddelande tillbaka.
     if(names.Count == 0)
     {
@@ -40,8 +39,15 @@ while(true)
     }
      // input från användaren, Ta bort, lägga till vara med både namn och sedan pris
     Console.WriteLine("");
-    Console.Write("\nLägg till / Ta bort: ");
+    Console.Write("\nLägg till varunamn eller ta bort vara: ");
     string? input = Console.ReadLine(); 
+
+    // Vi lägger till en break avsluta programmet/ bryter loopen utan att behöva använda ctrl + c.
+    if (input?.ToLower() == "klar")
+    {
+        Console.WriteLine("Tack för idag, shoppingen avslutas!");
+        break; 
+    }
 
     if (int.TryParse(input, out int inputAsNumber))
     {
@@ -55,6 +61,9 @@ while(true)
         else
         {
             Console.WriteLine("Det finns ingen vara med det numret!");
+            Console.WriteLine("Tryck Enter för att fortsätta");
+            // Förhindra att texten ovan ska försvinna för fort utan att behöva bryta loopen.
+            Console.ReadLine(); 
         }
     }
     else
@@ -73,6 +82,10 @@ while(true)
         else
         {
             Console.WriteLine("Ogiltigt pris! Varan lades inte till.");
+            Console.WriteLine("Tryck Enter för att fortsätta");
+            Console.ReadLine();
         }
     }
+    // underlättar att rensa upp i loopen
+    Console.Clear();
 }
