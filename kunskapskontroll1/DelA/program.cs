@@ -1,5 +1,7 @@
 // En lista med namn List<string>
 
+using Microsoft.VisualBasic;
+
 List<string> names = ["Mjölk", "Bröd", "Ost", "Flingor"];
 
 // En lista med priser List<int> - där samma index hör ihop (names[i] kostar prices[i]).
@@ -14,8 +16,10 @@ List<int> prices = [15, 32, 89, 25];
 3. Ost - 89 kr
 Totalt: 136 kr
 */
-
+int totalSum = 0;
 for(int i = 0; i < names.Count; i++)
 {
-    Console.WriteLine($"{i + 1}. {names[i]}");
+    Console.WriteLine($"{i + 1}. {names[i]} - {prices[i]}kr");
+    totalSum += prices[i];
 }
+Console.WriteLine($"Totalt: {totalSum} kr");
