@@ -14,8 +14,13 @@ public class Course(string name, int maxSeats)
     //Metod Enroll(student) — anmäler en studerande till kursen, om det finns plats.
     public void Enroll(Student student)
     {
+        // samma if som för studenter, lägg bara till om man inte redan är registrerad
+        // och inte är full.
+        if (Students.Count < MaxSeats && !Students.Contains(student))
+        {
         Students.Add(student);
-        student.Courses.Add(this);
+        student.Join(this);
+        }
     }
 
     // En ToString() som t.ex. ger "Matematik (2/5 platser)".

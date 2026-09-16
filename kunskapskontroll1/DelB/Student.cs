@@ -18,8 +18,12 @@ public class Student(string name)
  // För att lägga till studerande i kursen, använder vi if
     public void Join(Course course)
     {
+        // if säkerhetsställer att man inte kan registrera sig fler ggr på samma kurs.
+        if (!Courses.Contains(course))
+        {
         Courses.Add(course);
         course.Students.Add(this);
+        }
     }
 
     public override string ToString()
