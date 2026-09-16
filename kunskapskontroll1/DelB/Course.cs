@@ -18,12 +18,12 @@ public class Course(string name, int maxSeats)
           return; // Vi lägger in en return ifall studenten redan är anmäld
          }
 
-         if (Students.Count >= MaxSeats) // flyttar ner count till if
+         if (Students.Count >= MaxSeats) // flyttar ner MaxSeats till egen if
          {
         Console.WriteLine($"Kunde inte anmäla: {student.Name}: För kursen: {Name} är full!");
-        return;
+        return; // om kursen är full så skrivs meddelandet ut och avbryter
         }
-        /* Gamla
+        /* Gamla if
         if (Students.Count < MaxSeats && !Students.Contains(student))
         */
         Students.Add(student);
