@@ -9,23 +9,42 @@ Course svenska = new("Svenska", 10);
 
 // anmäl studenter
 anna.Join(matte);
+anna.Join(svenska);
 svenska.Enroll(bertil);
 
+// dubletter??
+svenska.Enroll(bertil);
+
+/*
 // kontrollera kurser
 Console.WriteLine($"Annas kurs: {anna.Courses[0]}");
 Console.WriteLine($"Mattes student: {matte.Students[0]}");
 
 Console.WriteLine($"Bertils kurs: {bertil.Courses[0]}");
 Console.WriteLine($"Svenskas student: {svenska.Students[0]}");
+*/
+
+// Testa RollCall och Schedule
+Console.WriteLine("Test RollCall");
+matte.RollCall();
+svenska.RollCall();
+
+Console.WriteLine("\nTest Schedule");
+anna.Schedule();
+bertil.Schedule();
+
 
 // Testa anmälan
-Console.WriteLine("\nTestar avanmälan");
-
-// Anna får lämna
+Console.WriteLine("\nTest anmälan");
 anna.Leave(matte);
+
 
 Console.WriteLine($"Antal kurser för Anna: {anna.Courses.Count}");
 Console.WriteLine($"Antal studenter i matte kursen: {matte.Students.Count}");
 
-// Anna fick lämna 2 ggr
+matte.RollCall();
+/*
+ Anna fick lämna 2 ggr
 anna.Leave(matte);
+*/
+

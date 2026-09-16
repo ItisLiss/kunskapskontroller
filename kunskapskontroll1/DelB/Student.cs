@@ -1,10 +1,8 @@
-/* Fält: Name och en lista Courses.
-● Metod Join(course) — går med i en kurs.
-● Metod Leave(course) — lämnar en kurs.
-● Metod Schedule() — skriver ut vilka kurser den studerande går.
-● En ToString() med den studerandes namn.
-● Reglerna som gör uppgiften — det är här logiken sitter:
-*/
+// Fält: Name och en lista Courses.
+
+
+//● En ToString() med den studerandes namn.
+//● Reglerna som gör uppgiften — det är här logiken sitter:
 
 public class Student(string name)
 {
@@ -22,16 +20,26 @@ public class Student(string name)
         if (!Courses.Contains(course))
         {
         Courses.Add(course);
-        course.Students.Add(this);
+        course.Enroll(this);
         }
     }
-    //Vi behöver kunna lämna kursen. Vilket vi gör på på samma vis som vi ansluter.
+    // Metod Leave(course) — lämnar en kurs.
+    // Vi behöver kunna lämna kursen. Vilket vi gör på på samma vis som vi ansluter.
     public void Leave(Course course)
     {
         if (Courses.Contains(course))
         {
             Courses.Remove(course);
             course.Remove(this); 
+        }
+    }
+    // Metod Schedule() — skriv ut vilka kurser den studerande går
+    public void Schedule()
+    {
+        Console.WriteLine($"Schema för {Name}:");
+        foreach (Course course in Courses)
+        {
+            Console.WriteLine($" - {course.Name}");
         }
     }
 
