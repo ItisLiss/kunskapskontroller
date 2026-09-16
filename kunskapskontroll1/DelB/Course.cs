@@ -11,16 +11,25 @@ public class Course(string name, int maxSeats)
     public List<Student> Students = [];
 
     //Metod Enroll(student) — anmäler en studerande till kursen, om det finns plats.
-    public void Enroll(Student student)
+        public void Enroll(Student student)
     {
-        // samma if som för studenter, lägg bara till om man inte redan är registrerad
-        // och inte är full.
-        if (Students.Count < MaxSeats && !Students.Contains(student))
-        {
-        Students.Add(student);
-        student.Join(this);
+        if (Students.Contains(student))
+         {
+          return; // Vi lägger in en return ifall studenten redan är anmäld
+         }
+
+         if (Students.Count >= MaxSeats) // flyttar ner count till if
+         {
+        Console.WriteLine($"Kunde inte anmäla: {student.Name}: För kursen: {Name} är full!");
+        return;
         }
+        /* Gamla
+        if (Students.Count < MaxSeats && !Students.Contains(student))
+        */
+        Students.Add(student);
+        student.Join(this); 
     }
+
      // Metod Remove(student) — tar bort en studerande ur kursen.
      public void Remove(Student student)
      {

@@ -4,15 +4,16 @@
 Student anna = new("Anna Andersson");
 Student bertil = new("Bertil Bengtsson");
 
-Course matte = new("Matte B", 5);
-Course svenska = new("Svenska", 10);
+Course matte = new("Matte B", 1);
+Course svenska = new("Svenska", 5);
 
 // anmäl studenter
 anna.Join(matte);
 anna.Join(svenska);
+matte.Enroll(bertil);
 svenska.Enroll(bertil);
 
-// dubletter??
+// dubletter?? Nahhh
 svenska.Enroll(bertil);
 
 /*
@@ -34,17 +35,17 @@ anna.Schedule();
 bertil.Schedule();
 
 
-// Testa anmälan
-Console.WriteLine("\nTest anmälan");
+/* Testa lämna
 anna.Leave(matte);
+*/
 
 
 Console.WriteLine($"Antal kurser för Anna: {anna.Courses.Count}");
 Console.WriteLine($"Antal studenter i matte kursen: {matte.Students.Count}");
 
 matte.RollCall();
-/*
- Anna fick lämna 2 ggr
+
+ // Anna fick lämna test 2
 anna.Leave(matte);
-*/
+
 
