@@ -14,4 +14,16 @@ public class Student(string name)
     //En tom lista för vi har ännu inte lagt in några studerande
     public List<Course> Courses = [];
 
+ // Andra delen är att skapa Metod: Join(course) 
+ // För att lägga till studerande i kursen, använder vi if
+    public void Join(Course course)
+    {
+        Courses.Add(course);
+        course.Students.Add(this);
+    }
+
+    public override string ToString()
+    {
+    return Name;
+    }
 }
