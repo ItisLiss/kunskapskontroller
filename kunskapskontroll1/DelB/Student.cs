@@ -25,6 +25,15 @@ public class Student(string name)
         course.Students.Add(this);
         }
     }
+    //Vi behöver kunna lämna kursen. Vilket vi gör på på samma vis som vi ansluter.
+    public void Leave(Course course)
+    {
+        if (Courses.Contains(course))
+        {
+            Courses.Remove(course);
+            course.Remove(this); 
+        }
+    }
 
     public override string ToString()
     {

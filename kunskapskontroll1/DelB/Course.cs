@@ -5,6 +5,8 @@
 */
 
 //  Fält: Name, en kapacitet MaxSeats (max antal platser), och en lista Students.
+
+
 public class Course(string name, int maxSeats)
 {
     public string Name = name;
@@ -22,6 +24,17 @@ public class Course(string name, int maxSeats)
         student.Join(this);
         }
     }
+     // Ta bort student och kurs
+     public void Remove(Student student)
+     {
+        if (Students.Contains(student))
+     {
+      Students.Remove(student);
+      student.Leave(this);  
+    }
+            
+    }
+    
 
     // En ToString() som t.ex. ger "Matematik (2/5 platser)".
     public override string ToString()
